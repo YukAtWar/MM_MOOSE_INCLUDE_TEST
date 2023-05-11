@@ -1,0 +1,16 @@
+name: Sync with upstream
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run every day at midnight
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Fetch upstream changes
+        run: git fetch upstream
+      - name: Merge upstream changes
+        run: git merge upstream/main --no-edit
+      - name: Push changes to origin
+        run: git push origin main
