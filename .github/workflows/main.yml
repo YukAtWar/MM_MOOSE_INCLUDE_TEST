@@ -7,6 +7,6 @@ jobs:
         uses: wei/git-sync@v3
         with:
           source_repo: "FlightControl-Master/MOOSE_INCLUDE"
-          source_branch: "main"
+          source_branch: "master"
           destination_repo: "nicelym/MM_MOOSE_INCLUDE"
-          destination_branch: "main"
+          destination_branch: "master"
