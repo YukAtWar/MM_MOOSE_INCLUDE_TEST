@@ -1,12 +1,14 @@
+name: Sync with upstream
 on: push
 jobs:
-  git-sync:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: git-sync
-        uses: wei/git-sync@v3
-        with:
-          source_repo: "https://nicelym:${{ secrets.GITHUB_TOKEN }}@github.com/FlightControl-Master/MOOSE_INCLUDE.git"
-          source_branch: "https://nicelym:${{ secrets.GITHUB_TOKEN }}@github.com/nicelym/MM_MOOSE_INCLUDE.git"
-          destination_repo: "nicelym/MM_MOOSE_INCLUDE"
-          destination_branch: "master"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Fetch upstream changes
+        run: git fetch upstream
+      - name: Merge upstream changes
+        run: git merge upstream/main --no-edit
+      - name: Push changes to origin
+        run: git push origin main
