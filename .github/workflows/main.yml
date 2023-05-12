@@ -1,16 +1,12 @@
-name: Sync with upstream
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Run every day at midnight
+on: push
 jobs:
-  sync:
+  git-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Fetch upstream changes
-        run: git fetch upstream
-      - name: Merge upstream changes
-        run: git merge upstream/main --no-edit
-      - name: Push changes to origin
-        run: git push origin main
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "FlightControl-Master/MOOSE_INCLUDE"
+          source_branch: "main"
+          destination_repo: "nicelym/MM_MOOSE_INCLUDE"
+          destination_branch: "main"
