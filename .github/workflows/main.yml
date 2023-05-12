@@ -6,7 +6,7 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: "FlightControl-Master/MOOSE_INCLUDE"
-          source_branch: "master"
+          source_repo: "https://nicelym:${{ secrets.GITHUB_TOKEN }}@github.com/FlightControl-Master/MOOSE_INCLUDE.git"
+          source_branch: "https://nicelym:${{ secrets.GITHUB_TOKEN }}@github.com/nicelym/MM_MOOSE_INCLUDE.git"
           destination_repo: "nicelym/MM_MOOSE_INCLUDE"
           destination_branch: "master"
